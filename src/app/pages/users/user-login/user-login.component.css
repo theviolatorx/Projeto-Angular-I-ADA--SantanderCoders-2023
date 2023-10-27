@@ -1,0 +1,30 @@
+main  {
+    border: 1px solid;
+    width: 100wh;
+    height: 93vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #5a71f3;
+    /* background: url('../../../../assets/img/water.jpg'); */
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+}
+
+main > div {
+    background: #fff;
+    border-radius: 10px;
+    width: 400px;
+    padding: 10px;
+    
+}
+.form-container {
+    max-width: 350px;
+    padding: 1rem;
+}
+form {
+    border: 2px solid #000;
+    padding: 13px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.4);
+}
