@@ -1,8 +1,22 @@
 main  {
-    height: 100vh;
-    background: url('../../../../assets/img/water.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+    border: 1px solid;
+    width: 100wh;
+    height: 93vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #5a71f3;
+    /* background: url('../../../../assets/img/water.jpg'); */
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+}
+
+main > div {
+    background: #fff;
+    border-radius: 10px;
+    width: 400px;
+    padding: 10px;
+    
 }
 .form-container {
     max-width: 350px;
