@@ -8,7 +8,7 @@ import { CustomerModel } from 'src/app/models/customer-model';
 })
 export class CustomerComponent implements OnInit{
   customers: CustomerModel[] = [];
-  typeList: boolean = (localStorage.getItem('typeList') == "true");
+  public typeList: boolean = (localStorage.getItem('typeList') == "true");
 
   constructor() {
    
