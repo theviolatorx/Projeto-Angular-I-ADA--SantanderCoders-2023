@@ -1,6 +1,6 @@
 {
-  "name": "trb01-v4.0",
-  "version": "0.0.0",
+  "name": "trabalho-angular-i-ada-santandercoders-2023",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0",
