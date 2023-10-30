@@ -3,21 +3,23 @@ import { NgForm } from '@angular/forms';
 import { CustomerModel } from 'src/app/models/customer-model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CustomerService {
   customers: CustomerModel[] = [];
 
   constructor() {
     this.loadCustomers();
-   }
-
-  private loadCustomers(): void{
-    const validateDataLocalStorage:string | null = localStorage.getItem("emxCustomerList");
-    if (validateDataLocalStorage) this.customers = JSON.parse(validateDataLocalStorage);
   }
 
-  getCustomersList(){
+  private loadCustomers(): void {
+    const validateDataLocalStorage: string | null =
+      localStorage.getItem('emxCustomerList');
+    if (validateDataLocalStorage)
+      this.customers = JSON.parse(validateDataLocalStorage);
+  }
+
+  getCustomersList() {
     this.loadCustomers();
     return this.customers;
   }
@@ -27,18 +29,21 @@ export class CustomerService {
     this.onSaveCustomers();
   }
 
-  setCustomers(form: NgForm){
-    this.customers.push({
-      id: this.customers.length+1,
-      name: form.value.name,
-      birthdate: form.value.birthdate,
-      email: form.value.email,
-      gender: form.value.gender
-    });
-    this.onSaveCustomers();
+  setCustomers(form: NgForm) {
+    const index = this.customers.at(-1)?.id;
+    if (index) {
+      this.customers.push({
+        id: index + 1,
+        name: form.value.name,
+        birthdate: form.value.birthdate,
+        email: form.value.email,
+        gender: form.value.gender,
+      });
+      this.onSaveCustomers();
+    }
   }
 
-  onSaveCustomers(){
+  onSaveCustomers() {
     localStorage.setItem('emxCustomerList', JSON.stringify(this.customers));
     // window.location.reload(true);
   }

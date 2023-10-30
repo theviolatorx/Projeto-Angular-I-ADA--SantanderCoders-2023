@@ -30,17 +30,15 @@ export class CustomerComponent implements OnInit {
     const index = this.customers.findIndex((element) => element.id === id);
     this.lName = this.customers[index].name;
     this.lBirthdate = this.customers[index].birthdate;
-    this.ctod(this.customers[index].birthdate);
     this.lEmail = this.customers[index].email;
     this.lGender = this.customers[index].gender;
   }
 
-  ctod(date: Date) {
-    const dd = date.getDay;
-    const mm = date.getMonth;
-    const yy = date.getFullYear;
-    console.log(dd, mm, yy);
-    // console.log((yy.toString() + '-' + mm.toString() + '-' + dd.toString()));
+  dtos(date: Date) {
+    const res = date.toString().split("-");
+    const r = res[0]+"-"+res[1]+"-"+res[2];
+    return(r);
+    
   }
   onHandleTypeList(event: boolean): void {
     if (!event) {
@@ -59,14 +57,10 @@ export class CustomerComponent implements OnInit {
     } else {
       if (id === 0) {
         this.customerService.setCustomers(form);
-        console.log('Add customer!', this.customers.length);
-        console.log('Recebido', form.value);
-        console.log(form.value.name, form.value.email);
       } else {
         const index = this.customers.findIndex((element) => element.id === id);
         this.lName = this.customers[index].name;
         this.lBirthdate = this.customers[index].birthdate;
-        this.ctod(this.customers[index].birthdate);
         this.lEmail = this.customers[index].email;
         this.lGender = this.customers[index].gender;
       }
