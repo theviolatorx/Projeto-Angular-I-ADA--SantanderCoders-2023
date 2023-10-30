@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CustomerModel } from 'src/app/models/customer-model';
 import { CustomerService } from 'src/app/services/customers/customer.service';
 
@@ -16,10 +17,19 @@ export class CustomerComponent implements OnInit {
   public lBirthdate: Date | null = null;
   public lEmail: string | null = null;
   public lGender: string | null = null;
+  private userLogged:boolean = false;
+  private router: Router;
 
-  constructor(private customerService: CustomerService) {}
+  constructor(
+    router: Router,
+    private customerService: CustomerService,
+    ) {
+      this.router = router;
+    }
 
   ngOnInit(): void {
+    this.userLogged = sessionStorage.getItem('keysession') == 'true';
+    if (!this.userLogged)  this.router.navigate(['/','']);
     this.customers = this.customerService.getCustomersList();
   }
 

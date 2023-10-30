@@ -6,21 +6,24 @@
         <!-- Form Login-->
         <div id="formSigin" *ngIf="showLogin"
             class="justify-content-center d-flex rounded shadow-lg p-3 mb-5 bg-body-tertiary border border-light w-75">
-            <form  #form1="ngForm" class="w-100 p-3" (ngSubmit)="signin(form1);">
-                <p class="mt-3">
-                    Sign in
+            <form #form1="ngForm" class="w-100 p-3" (ngSubmit)="signin(form1);">
+                <p class="mt-3" style="font-size: 2rem;">
+                    <strong>Sign in</strong>
                 </p>
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" name="siginInmail" #siginInmail="ngModel" [ngModel]="siginInmail.value" required>
+                    <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com"
+                        name="siginInmail" #siginInmail="ngModel" [ngModel]="siginInmail.value" required>
                     <label for="floatingEmail">Email address to login</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="siginInPass" #siginInPass="ngModel" [ngModel]="siginInPass.value"  required>
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                        name="siginInPass" #siginInPass="ngModel" [ngModel]="siginInPass.value" required>
                     <label for="floatingPassword">Password to login</label>
                 </div>
                 <div class="row justify-content-between w-100">
                     <div class="col">
-                        <button id="btnSignin" type="submit" class="btn btn-primary mb-3" [disabled]="form1.invalid">Sign in</button>
+                        <button id="btnSignin" type="submit" class="btn btn-primary mb-3"
+                            [disabled]="form1.invalid">Sign in</button>
                     </div>
                     <div class="col">
                         <button id="btnSignup" type="button" class="btn btn-primary mb-3"
@@ -33,9 +36,9 @@
         <div id="formSigup" *ngIf="!showLogin"
             class="justify-content-center d-flex rounded shadow-lg p-3 mb-5 bg-body-tertiary border border-light w-75">
 
-            <form  class="w-100 p-3">
-                <p class="mt-3">
-                    Sing up
+            <form class="w-100 p-3">
+                <p class="mt-3" style="font-size: 2rem;">
+                    <strong> Sing up</strong>
                 </p>
                 <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
@@ -47,7 +50,8 @@
                 </div>
                 <div class="row justify-content-between w-100">
                     <div class="col">
-                        <button (click)='handlerLoginRegister("cancel");' type="button" class="btn btn-danger mb-3">Cancel</button>
+                        <button (click)='handlerLoginRegister("cancel");' type="button"
+                            class="btn btn-danger mb-3">Cancel</button>
                     </div>
                     <div class="col">
                         <!-- TODO: Trocar para submit -->
