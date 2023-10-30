@@ -26,11 +26,22 @@ export class CustomerComponent implements OnInit {
     if (id > 0) this.customerService.deleteCustomer(id);
   }
 
-  editUser(id: number){
-    console.log(id, this.customers[id]);
-    this.lName = this.customers[id].name;
+  editUser(id: number) {
+    const index = this.customers.findIndex((element) => element.id === id);
+    this.lName = this.customers[index].name;
+    this.lBirthdate = this.customers[index].birthdate;
+    this.ctod(this.customers[index].birthdate);
+    this.lEmail = this.customers[index].email;
+    this.lGender = this.customers[index].gender;
   }
 
+  ctod(date: Date) {
+    const dd = date.getDay;
+    const mm = date.getMonth;
+    const yy = date.getFullYear;
+    console.log(dd, mm, yy);
+    // console.log((yy.toString() + '-' + mm.toString() + '-' + dd.toString()));
+  }
   onHandleTypeList(event: boolean): void {
     if (!event) {
       this.typeList = true; // Tabela
@@ -51,11 +62,18 @@ export class CustomerComponent implements OnInit {
         console.log('Add customer!', this.customers.length);
         console.log('Recebido', form.value);
         console.log(form.value.name, form.value.email);
-        this.lName = null;
-        this.lBirthdate = null;
-        this.lEmail = null;
-        this.lGender = null;
+      } else {
+        const index = this.customers.findIndex((element) => element.id === id);
+        this.lName = this.customers[index].name;
+        this.lBirthdate = this.customers[index].birthdate;
+        this.ctod(this.customers[index].birthdate);
+        this.lEmail = this.customers[index].email;
+        this.lGender = this.customers[index].gender;
       }
+      this.lName = null;
+      this.lBirthdate = null;
+      this.lEmail = null;
+      this.lGender = null;
     }
   }
 }
