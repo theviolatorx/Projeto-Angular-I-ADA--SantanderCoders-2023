@@ -36,6 +36,7 @@ export class CustomerComponent implements OnInit {
 
   deleteCustomer(id: number) {
     if (id > 0) this.customerService.deleteCustomer(id);
+    this.ngOnInit();
   }
 
   editUser(id: number) {
