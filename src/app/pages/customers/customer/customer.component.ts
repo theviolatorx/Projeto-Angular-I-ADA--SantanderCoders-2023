@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { CustomerModel } from 'src/app/models/customer-model';
 import { CustomerService } from 'src/app/services/customers/customer.service';
 
@@ -37,5 +38,9 @@ export class CustomerComponent implements OnInit{
    
   }
 
+  getDataForm(form: NgForm){
+    if (form.invalid) console.log("Formulário inválido")
+    console.log("Recebido", form.value);
+  }
 
 }
