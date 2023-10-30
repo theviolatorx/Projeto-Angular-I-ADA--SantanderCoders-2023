@@ -19,7 +19,7 @@
                     <div class="col-md-4 offset-md-1">
                         <!-- TODO: Add | Edit Customer -->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdropAddEdit" data-toggle="tooltip" title="Add Customer">
+                            data-bs-target="#staticBackdropAddEdit" data-toggle="tooltip" title="Add Customer" (click)="cleanFields();">
                             <strong>ADD </strong>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -211,7 +211,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form #form="ngForm" class="w-100 p-3" (ngSubmit)="getDataForm(form, 0);">
+                <form #form="ngForm" class="w-100 p-3" (ngSubmit)="getDataForm(form, id.value);">
+                       <input type="hidden" class="form-control" id="floatingId" placeholder="ID" maxlength="4" name="id" #id="ngModel" [ngModel]="id.value" [(ngModel)]="lId" readonly>
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="floatingName" placeholder="Name" maxlength="30" name="name" #name="ngModel" [ngModel]="name.value" [(ngModel)]="lName" required>
                         <label for="floatingName">Name</label>

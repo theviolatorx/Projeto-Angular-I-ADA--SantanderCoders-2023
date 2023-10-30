@@ -29,7 +29,7 @@ export class CustomerService {
     this.onSaveCustomers();
   }
 
-  setCustomers(form: NgForm) {
+  setCustomersAdd(form: NgForm) {
     const index = this.customers.at(-1)?.id;
     if (index) {
       this.customers.push({
@@ -43,7 +43,11 @@ export class CustomerService {
     }
   }
 
-  onSaveCustomers() {
+  setCustomersEdit() {
+    this.onSaveCustomers();
+  }
+
+  private onSaveCustomers() {
     localStorage.setItem('emxCustomerList', JSON.stringify(this.customers));
     // window.location.reload(true);
   }
