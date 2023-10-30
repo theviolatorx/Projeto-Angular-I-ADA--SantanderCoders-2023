@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { CustomerModel } from 'src/app/models/customer-model';
 
 @Injectable({
@@ -23,6 +24,17 @@ export class CustomerService {
 
   deleteCustomer(id: number) {
     this.customers = this.customers.filter((element) => element.id != id);
+    this.onSaveCustomers();
+  }
+
+  setCustomers(form: NgForm){
+    this.customers.push({
+      id: this.customers.length,
+      name: form.value.name,
+      birthdate: form.value.birthdate,
+      email: form.value.email,
+      gender: form.value.gender
+    });
     this.onSaveCustomers();
   }
 
