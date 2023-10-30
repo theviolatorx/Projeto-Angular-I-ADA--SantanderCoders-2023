@@ -10,10 +10,11 @@ main  {
 #imageLogin {
     background-color: red;
     min-width: 350px;
-    background: url('../../../../assets/img/backimage.png');
+    background: url('../../../../assets/img/backimage1.png');
     background-repeat: no-repeat;
-    background-size: cover;
-    filter: blur(3px);
+    background-position: center;
+    /* background-size: cover; */
+    filter: blur(2px);
     
 }
 

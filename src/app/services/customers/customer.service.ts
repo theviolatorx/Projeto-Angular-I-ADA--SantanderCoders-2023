@@ -51,6 +51,6 @@ export class CustomerService {
 
   private onSaveCustomers() {
     localStorage.setItem('emxCustomerList', JSON.stringify(this.customers));
-    // window.location.reload(true);
+    this.loadCustomers();
   }
 }
