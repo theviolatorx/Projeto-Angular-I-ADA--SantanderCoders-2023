@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserModel } from 'src/app/models/user-model';
 
 @Component({
@@ -7,21 +8,34 @@ import { UserModel } from 'src/app/models/user-model';
   templateUrl: './user-login.component.html',
   styleUrls: ['./user-login.component.css'],
 })
-export class UserLoginComponent {
+export class UserLoginComponent implements OnInit{
   user: UserModel[] = [];
   showLogin:boolean = true;
-  userLogged:boolean = false;
+  userLogged:boolean = sessionStorage.getItem('keysession') == 'true';
   public logEmail: string = '';
   public logPass: string = '';
+  router: Router;
 
-  constructor(){
+  constructor(
+    router: Router
+  ){
+    this.router = router;
     this.user.push({
       email: 'emx@emx.com',
       pass: '123'
     });
-    console.log(this.user);
   }
 
+  ngOnInit(): void{
+    this.redirectToCustomers();
+  }
+
+  private redirectToCustomers(){
+    console.log(this.userLogged);
+    if (this.userLogged) {
+      this.router.navigate(['/','customer']);
+    }
+  }
 
   handlerLoginRegister(value: string){
     switch (value){
