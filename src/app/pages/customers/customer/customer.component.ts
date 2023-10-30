@@ -19,6 +19,7 @@ export class CustomerComponent implements OnInit {
   public lGender: string | null = null;
   private userLogged:boolean = false;
   private router: Router;
+  private handlerAddEdit: boolean = false;
 
   constructor(
     router: Router,
@@ -62,8 +63,9 @@ export class CustomerComponent implements OnInit {
     if (form.invalid) {
       console.log('Formulário inválido!');
     } else {
-      if (id === 0) {
+      if (this.handlerAddEdit) {
         this.customerService.setCustomersAdd(form);
+        this.handlerAddEdit = false;
       } else {
         const index = this.customers.findIndex((element) => element.id === id);
         this.customers[index].name = form.value.name;
@@ -77,6 +79,7 @@ export class CustomerComponent implements OnInit {
   }
 
   public cleanFields() {
+    this.handlerAddEdit = true;
     this.lId = null;
     this.lName = null;
     this.lBirthdate = null;
