@@ -6,10 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-login.component.css'],
 })
 export class UserLoginComponent {
-  myTheme: string = 'dark';
+  showLogin:boolean = true;
+  userLogged:boolean = false;
 
-  // onSwitch() {
-  //   if (this.myTheme === 'light') this.myTheme = 'dark';
-  //   else this.myTheme = 'light';
-  // }
+  constructor(){}
+
+
+  handlerLoginRegister(value: string){
+    switch (value){
+      case 'siginup':
+        this.showLogin = false;
+        break;
+      case 'cancel':
+        this.showLogin = true;
+        break;
+    }
+  }
 }
