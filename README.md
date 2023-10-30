@@ -1,27 +1,41 @@
-# Trb01V40
+# Santander Coders - Turma 1004 CRUD
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.
+🚀 Bem-vindo ao CRUD (Create, Read, Update, Delete) desenvolvido para o Santander Coders - Turma 1004!
 
-## Development server
+Este projeto é uma aplicação simples para gerenciar dados, permitindo a criação, leitura, atualização e exclusão de registros.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## O que é um CRUD?
 
-## Code scaffolding
+Um CRUD é uma abreviação para operações básicas de banco de dados: Create (criar), Read (ler), Update (atualizar) e Delete (excluir). Essas operações são essenciais em qualquer aplicação que lida com dados.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Como usar
 
-## Build
+### Pré-requisitos
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Node.js e npm instalados ([Baixe aqui](https://nodejs.org/))
+- Angular CLI instalado (`npm install -g @angular/cli`)
 
-## Running unit tests
+### Clonando o Repositório
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+bash
+mkdir projeto-angular
+cd projeto-angular
+git [clone https://github.com/juliocsilvestre/crud-santandercoders-angular.git](https://github.com/theviolatorx/Projeto-Angular-I-ADA--SantanderCoders-2023.git) .
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Instalando Dependências
+bash
+npm install
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Rodando o Projeto
+bash
+ng serve
+Acesse a aplicação no seu navegador em http://localhost:4200.
+
+
+Contribuindo
+Se deseja contribuir, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+
+Licença
+Este projeto está sob a Licença MIT. Veja o arquivo LICENSE para mais detalhes.
