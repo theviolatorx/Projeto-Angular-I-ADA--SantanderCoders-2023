@@ -11,6 +11,10 @@ import { CustomerService } from 'src/app/services/customers/customer.service';
 export class CustomerComponent implements OnInit {
   customers: CustomerModel[] = [];
   public typeList: boolean = localStorage.getItem('emxTypeList') == 'true';
+  public lName: string | null = null;
+  public lBirthdate: Date | null = null;
+  public lEmail: string | null = null;
+  public lGender: string | null = null;
 
   constructor(private customerService: CustomerService) {}
 
@@ -20,6 +24,11 @@ export class CustomerComponent implements OnInit {
 
   deleteCustomer(id: number) {
     if (id > 0) this.customerService.deleteCustomer(id);
+  }
+
+  editUser(id: number){
+    console.log(id, this.customers[id]);
+    this.lName = this.customers[id].name;
   }
 
   onHandleTypeList(event: boolean): void {
@@ -42,6 +51,10 @@ export class CustomerComponent implements OnInit {
         console.log('Add customer!', this.customers.length);
         console.log('Recebido', form.value);
         console.log(form.value.name, form.value.email);
+        this.lName = null;
+        this.lBirthdate = null;
+        this.lEmail = null;
+        this.lGender = null;
       }
     }
   }

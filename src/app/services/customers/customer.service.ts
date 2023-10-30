@@ -29,7 +29,7 @@ export class CustomerService {
 
   setCustomers(form: NgForm){
     this.customers.push({
-      id: this.customers.length,
+      id: this.customers.length+1,
       name: form.value.name,
       birthdate: form.value.birthdate,
       email: form.value.email,
