@@ -1,41 +1,71 @@
-# Santander Coders - Turma 1004 CRUD
+# Projeto Angular I - ADA | SantanderCoders 2023
 
-🚀 Bem-vindo ao CRUD (Create, Read, Update, Delete) desenvolvido para o Santander Coders - Turma 1004!
+Bem-vindo ao Projeto SantanderCoders 2023 - Angular I, parte das aulas ministradas pela ADA em parceria com o Santander. Este projeto implementa um CRUD em Angular 2+ para o cadastro e listagem de clientes.
 
-Este projeto é uma aplicação simples para gerenciar dados, permitindo a criação, leitura, atualização e exclusão de registros.
+# Instalação
 
-## O que é um CRUD?
+Certifique-se de ter o Node.js e o npm instalados. Clone o repositório e instale as dependências:
 
-Um CRUD é uma abreviação para operações básicas de banco de dados: Create (criar), Read (ler), Update (atualizar) e Delete (excluir). Essas operações são essenciais em qualquer aplicação que lida com dados.
-
-## Como usar
-
-### Pré-requisitos
-
-- Node.js e npm instalados ([Baixe aqui](https://nodejs.org/))
-- Angular CLI instalado (`npm install -g @angular/cli`)
-
-### Clonando o Repositório
-
-bash
-mkdir projeto-angular
-cd projeto-angular
-git [clone https://github.com/juliocsilvestre/crud-santandercoders-angular.git](https://github.com/theviolatorx/Projeto-Angular-I-ADA--SantanderCoders-2023.git) .
-
-
-Instalando Dependências
-bash
+```
+mkdir projeto
+cd projeto
+git clone https://github.com/theviolatorx/Projeto-Angular-I-ADA--SantanderCoders-2023.git .
+cd Projeto-Angular-I-ADA--SantanderCoders-2023
 npm install
+```
 
+# Como Usar
 
-Rodando o Projeto
-bash
-ng serve
-Acesse a aplicação no seu navegador em http://localhost:4200.
+Inicie a aplicação localmente:
 
+```
+ng server
+```
 
-Contribuindo
-Se deseja contribuir, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+Acesse http://localhost:4200/ no navegador.
 
-Licença
-Este projeto está sob a Licença MIT. Veja o arquivo LICENSE para mais detalhes.
+# Autenticação
+
+Antes de acessar o CRUD, faça o login no sistema. Use as credenciais fornecidas ou crie uma nova conta.
+
+# CRUD - Cadastro de Clientes
+
+## Cadastro
+
+1. Vá para a seção de cadastro na barra de navegação.
+2. Preencha as informações para cadastrar um novo cliente:
+   * Nome
+   * Data de Nascimento
+   * Email
+   * Sexo
+
+```
+// Exemplo de código para cadastro de cliente
+const novoCliente = {
+  nome: 'Nome do Cliente',
+  dataNascimento: '1990-01-01',
+  email: 'cliente@email.com',
+  sexo: 'Masculino/Feminino',
+};
+
+// Função para cadastrar cliente
+function cadastrarCliente(cliente) {
+  // Lógica de cadastro aqui
+}
+```
+
+# Demonstração
+
+Veja uma demonstração ao vivo do projeto [aqui](https://vercel.com/theviolatorx/projeto-angular-i-2023-trabalho-final).
+
+# Contribuição
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir problemas (issues) e enviar pull requests.
+
+# Licença
+
+Este projeto é licenciado sob a [Licença MIT](https://opensource.org/license/mit/).
+
+# Contato
+
+Para feedback e discussões, entre em contato em [theviolatorx@gmail.com].
