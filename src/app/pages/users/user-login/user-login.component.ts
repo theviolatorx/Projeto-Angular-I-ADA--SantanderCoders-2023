@@ -8,36 +8,33 @@ import { UserModel } from 'src/app/models/user-model';
   templateUrl: './user-login.component.html',
   styleUrls: ['./user-login.component.css'],
 })
-export class UserLoginComponent implements OnInit{
+export class UserLoginComponent implements OnInit {
   private user: UserModel[] = [];
-  showLogin:boolean = true;
-  private userLogged:boolean = false;
+  showLogin: boolean = true;
+  private userLogged: boolean = false;
   public logEmail: string = '';
   public logPass: string = '';
   private router: Router;
 
-  constructor(
-    router: Router
-  ){
+  constructor(router: Router) {
     this.router = router;
     this.user.push({
       email: 'admin',
-      pass: 'admin'
+      pass: 'admin',
     });
   }
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.userLogged = sessionStorage.getItem('keysession') == 'true';
     this.redirectToCustomers();
   }
 
-  private redirectToCustomers(){
-    if (this.userLogged)  this.router.navigate(['/','customer']);
-
+  private redirectToCustomers() {
+    if (this.userLogged) this.router.navigate(['/', 'customer']);
   }
 
-  handlerLoginRegister(value: string){
-    switch (value){
+  handlerLoginRegister(value: string) {
+    switch (value) {
       case 'siginup':
         this.showLogin = false;
         break;
@@ -47,12 +44,28 @@ export class UserLoginComponent implements OnInit{
     }
   }
 
-  signin(form: NgForm){
-    if ( this.user[0].email === form.value.siginInmail && this.user[0].pass === form.value.siginInPass ) {
-      this.userLogged = true;
-      this.redirectToCustomers();
+  signinup(form: NgForm) {
+    if (this.showLogin) { // Form Login
+      if (
+        this.user[0].email === form.value.siginInmail &&
+        this.user[0].pass === form.value.siginInPass
+      ) {
+        this.userLogged = true;
+        this.redirectToCustomers();
+      }
+      sessionStorage.setItem('keysession', JSON.stringify(this.userLogged));
+    } else { // Form Register
+      this.registerNewUser(form);
     }
-    sessionStorage.setItem('keysession',JSON.stringify(this.userLogged));
-
   }
+
+  private registerNewUser(form: NgForm){
+    const emailUser = form.value.siginUpEmail.trim().toLowerCase();
+    const passUser = form.value.siginUpPass.trim().toLowerCase();
+    if (passUser.length < 8) {
+      console.log("Senha precisa ter mais que 8 caracteres!");
+    }
+  }
+
 }
+
