@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UserModel } from 'src/app/models/user-model';
 
 @Component({
@@ -16,7 +17,10 @@ export class UserLoginComponent implements OnInit {
   public logPass: string = '';
   private router: Router;
 
-  constructor(router: Router) {
+  constructor(
+    router: Router,
+    private toastr: ToastrService
+    ) {
     this.router = router;
     this.user.push({
       email: 'admin',
@@ -63,9 +67,9 @@ export class UserLoginComponent implements OnInit {
     const emailUser = form.value.siginUpEmail.trim().toLowerCase();
     const passUser = form.value.siginUpPass.trim().toLowerCase();
     if (passUser.length < 8) {
-      console.log("Senha precisa ter mais que 8 caracteres!");
+      this.toastr.info('Senha precisa ter mais que 8 caracteres!');
     }
   }
 
-}
+}2
 
