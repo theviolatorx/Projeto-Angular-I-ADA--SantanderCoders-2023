@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -17,7 +19,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(
+      {
+        timeOut: 5000,
+        positionClass: 'toast-top-center',
+        preventDuplicates: true,
+        progressBar: true,
+      }
+    )
   ]
 })
 export class UsersModule { }
