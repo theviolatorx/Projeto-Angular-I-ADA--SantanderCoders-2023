@@ -24,10 +24,10 @@ export class UserLoginComponent implements OnInit {
     private userService: UserService,
     ) {
     this.router = router;
-    this.user.push({
-      email: 'admin',
-      pass: 'admin',
-    });
+    // this.user.push({
+    //   email: 'admin',
+    //   pass: 'admin',
+    // });
   }
 
   ngOnInit(): void {
@@ -52,16 +52,17 @@ export class UserLoginComponent implements OnInit {
 
   signinup(form: NgForm) {
     if (this.showLogin) { // Form Login
-      if (
-        this.user[0].email === form.value.siginInmail &&
-        this.user[0].pass === form.value.siginInPass
-      ) {
+      
+      if (this.userService.findUser(form)) {
         this.userLogged = true;
         this.redirectToCustomers();
       }
       sessionStorage.setItem('keysession', JSON.stringify(this.userLogged));
     } else { // Form Register
-      this.userService.validateNewUser(form);
+      if (this.userService.validateNewUser(form)){
+        this.userLogged = true;
+        this.redirectToCustomers();
+      };
     }
   }
 }
