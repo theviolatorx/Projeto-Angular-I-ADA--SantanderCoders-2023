@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserModel } from 'src/app/models/user-model';
+import { UserService } from 'src/app/services/users/user.service';
 
 @Component({
   selector: 'app-user-login',
@@ -19,7 +20,8 @@ export class UserLoginComponent implements OnInit {
 
   constructor(
     router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private userService: UserService,
     ) {
     this.router = router;
     this.user.push({
@@ -59,17 +61,8 @@ export class UserLoginComponent implements OnInit {
       }
       sessionStorage.setItem('keysession', JSON.stringify(this.userLogged));
     } else { // Form Register
-      this.registerNewUser(form);
+      this.userService.validateNewUser(form);
     }
   }
-
-  private registerNewUser(form: NgForm){
-    const emailUser = form.value.siginUpEmail.trim().toLowerCase();
-    const passUser = form.value.siginUpPass.trim().toLowerCase();
-    if (passUser.length < 8) {
-      this.toastr.info('Senha precisa ter mais que 8 caracteres!');
-    }
-  }
-
-}2
+}
 
