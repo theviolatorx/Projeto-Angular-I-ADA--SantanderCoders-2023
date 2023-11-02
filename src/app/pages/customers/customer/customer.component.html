@@ -208,7 +208,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="staticBackdropLabel">Add | Edit Customer</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="setModAdd();"></button>
             </div>
             <div class="modal-body">
                 <form #form="ngForm" class="w-100 p-3" (ngSubmit)="getDataForm(form, id.value);">
@@ -238,7 +238,7 @@
                         <span *ngIf="gender.invalid && (gender.dirty && gender.touched)"></span>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="setModAdd();">Cancel</button>
                         <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="form.invalid">Save</button>
                     </div>
                 </form>
