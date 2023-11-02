@@ -40,6 +40,7 @@ export class CustomerComponent implements OnInit {
   }
 
   editUser(id: number) {
+    debugger
     const index = this.customers.findIndex((element) => element.id === id);
     this.lId = this.customers[index].id;
     this.lName = this.customers[index].name;
