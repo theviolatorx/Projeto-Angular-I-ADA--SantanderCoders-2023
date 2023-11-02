@@ -19,7 +19,7 @@ export class CustomerComponent implements OnInit {
   public lGender: string | null = null;
   private userLogged:boolean = false;
   private router: Router;
-  private handlerAddEdit: boolean = false;
+  private handlerAddEdit: boolean = false; // False: Edit | True: Add
 
   constructor(
     router: Router,
@@ -40,6 +40,7 @@ export class CustomerComponent implements OnInit {
   }
 
   editUser(id: number) {
+    this.handlerAddEdit = true;
     const index = this.customers.findIndex((element) => element.id === id);
     this.lId = this.customers[index].id;
     this.lName = this.customers[index].name;
@@ -60,14 +61,20 @@ export class CustomerComponent implements OnInit {
     }
   }
 
+  setModAdd(){
+    this.handlerAddEdit = false
+  }
+
   getDataForm(form: NgForm, id: number) {
+    console.log(this.handlerAddEdit);
+    debugger
     if (form.invalid) {
       console.log('Formulário inválido!');
     } else {
       if (this.handlerAddEdit) {
         this.customerService.setCustomersAdd(form);
-        this.handlerAddEdit = false;
       } else {
+        this.handlerAddEdit = false;
         const index = this.customers.findIndex((element) => element.id === id);
         this.customers[index].name = form.value.name;
         this.customers[index].birthdate = form.value.birthdate;
