@@ -17,6 +17,12 @@ export class UserLoginComponent implements OnInit {
   public logEmail: string = '';
   public logPass: string = '';
   private router: Router;
+  public reEmail= /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  public reLowCase = /^(?=.*[a-z])/;
+  public reUpperCase = /(?=.*[A-Z])/;
+  public reNumberCaracter = /(?=.*[0-9])/;
+  public reSpecialCaracter = /(?=.*[!@#$%^&*])/;
+  public reLengthCaracter = /(?=.{8,})/;
 
   constructor(
     router: Router,
