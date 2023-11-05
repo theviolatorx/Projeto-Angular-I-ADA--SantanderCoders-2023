@@ -3,8 +3,13 @@
         <div class="container-fluid">
             <a class="navbar-brand">CRUD</a>
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" (click)="logout();" type="button">Logout</button>
+                <div class="input-group">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                    [(ngModel)]="searchField" name="searchField" data-bs-toggle="tooltip" data-bs-title="Default tooltip" (keyup)="search();">
+                    <!-- <button class="btn btn-success" type="submit">Search</button> -->
+                </div>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-danger" (click)="logout();" type="button">Logout</button>
             </form>
         </div>
     </nav>

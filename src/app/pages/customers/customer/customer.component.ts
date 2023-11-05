@@ -31,7 +31,7 @@ export class CustomerComponent implements OnInit {
   ngOnInit(): void {
     this.userLogged = sessionStorage.getItem('keysession') == 'true';
     if (!this.userLogged)  this.router.navigate(['/','']);
-    this.customers = this.customerService.getCustomersList();
+    this.customers = this.customerService.getCustomersList(this.customerService.searchFlag);
   }
 
   deleteCustomer(id: number) {
@@ -67,7 +67,6 @@ export class CustomerComponent implements OnInit {
 
   getDataForm(form: NgForm, id: number) {
     console.log(this.handlerAddEdit);
-    debugger
     if (form.invalid) {
       console.log('Formulário inválido!');
     } else {
