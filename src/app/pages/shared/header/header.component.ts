@@ -42,14 +42,12 @@ export class HeaderComponent implements OnChanges{
         this.customerService.searchText = this.searchField;
         if (this.searchField[0] === '@') {
           this.customerService.searchType = '@';
-          console.log('Pesquisa pelo e-mail!');
         } else if (lenSearch > 0) {
           if (this.searchField[0] === '#') {
             this.customerService.searchType = '#';
             console.log('Pesquisa pela data de nascimento!');
           } else {
             this.customerService.searchType = '';
-            console.log('Pesquisa pelo nome!');
           }
         }
         this.customerService.getCustomersList(this.customerService.searchFlag);

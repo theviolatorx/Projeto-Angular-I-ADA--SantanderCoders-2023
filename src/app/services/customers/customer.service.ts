@@ -25,19 +25,25 @@ export class CustomerService {
       } else {
         switch (this.searchType) {
           case '@':
-            console.log('Pesquisa E-mail!');
-            this.customers = this.customers.filter((element) => element.email == this.searchText);
+            this.customers = this.customers.filter((element) => element.email.toLowerCase().includes(this.removeFistChar(this.searchText)));
             break;
           case '#':
             console.log('Pesquisa Data!');
              // this.customers = this.customers.filter((element) => 
             break;
           default:
-            console.log('Pesquisa por nome!');
-             this.customers = this.customers.filter((element) => element.name == this.searchText);
+             this.customers = this.customers.filter((element) => element.name.toLowerCase().includes(this.searchText.toLowerCase()));
         }
       }
     }
+  }
+
+  private removeFistChar(searchText: string): string {
+    let newText:string = '';
+    for (let i=1; i < searchText.length; i++){
+      newText += searchText[i];
+    } 
+    return newText.toLowerCase();
   }
 
   getCustomersList(flag: boolean) {
