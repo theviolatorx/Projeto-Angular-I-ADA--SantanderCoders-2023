@@ -67,7 +67,6 @@ export class CustomerComponent implements OnInit {
 
   getDataForm(form: NgForm, id: number) {
     console.log(this.handlerAddEdit);
-    debugger
     if (form.invalid) {
       console.log('Formulário inválido!');
     } else {

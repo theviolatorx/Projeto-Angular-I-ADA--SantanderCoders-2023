@@ -9,12 +9,14 @@ export class CustomerService {
   customers: CustomerModel[] = [];
   public searchFlag: boolean = true;
   public searchType: string = '';
+  public searchText: string = '';
 
   constructor() {
     this.loadCustomers(this.searchFlag);
   }
 
   private loadCustomers(flag: boolean): void {
+    // debugger;
     const validateDataLocalStorage: string | null =
       localStorage.getItem('emxCustomerList');
     if (validateDataLocalStorage) {
@@ -24,12 +26,15 @@ export class CustomerService {
         switch (this.searchType) {
           case '@':
             console.log('Pesquisa E-mail!');
+            this.customers = this.customers.filter((element) => element.email == this.searchText);
             break;
           case '#':
             console.log('Pesquisa Data!');
+             // this.customers = this.customers.filter((element) => 
             break;
           default:
             console.log('Pesquisa por nome!');
+             this.customers = this.customers.filter((element) => element.name == this.searchText);
         }
       }
     }
