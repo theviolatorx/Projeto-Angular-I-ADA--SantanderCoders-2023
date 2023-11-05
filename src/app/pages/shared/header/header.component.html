@@ -4,8 +4,8 @@
             <a class="navbar-brand">CRUD</a>
             <form class="d-flex">
                 <div class="input-group">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-success" type="submit">Search</button>
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchField" name="searchField" (keyup)="search();">
+                    <!-- <button class="btn btn-success" type="submit">Search</button> -->
                 </div>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <button class="btn btn-danger" (click)="logout();" type="button">Logout</button>
