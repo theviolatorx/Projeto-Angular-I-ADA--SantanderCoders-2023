@@ -19,7 +19,7 @@ export class CustomerComponent implements OnInit {
   public lGender: string | null = null;
   private userLogged:boolean = false;
   private router: Router;
-  private handlerAddEdit: boolean = false; // False: Edit | True: Add
+  private handlerAddEdit: boolean = true; // False: Edit | True: Add
 
   constructor(
     router: Router,
@@ -40,7 +40,8 @@ export class CustomerComponent implements OnInit {
   }
 
   editUser(id: number) {
-    this.handlerAddEdit = true;
+    // debugger
+    this.handlerAddEdit = false;
     const index = this.customers.findIndex((element) => element.id === id);
     this.lId = this.customers[index].id;
     this.lName = this.customers[index].name;
@@ -62,26 +63,25 @@ export class CustomerComponent implements OnInit {
   }
 
   setModAdd(){
-    this.handlerAddEdit = false
+    this.handlerAddEdit = true;
   }
 
   getDataForm(form: NgForm, id: number) {
+    
     console.log(this.handlerAddEdit);
     if (form.invalid) {
       console.log('Formulário inválido!');
     } else {
+      // debugger
       if (this.handlerAddEdit) {
         this.customerService.setCustomersAdd(form);
       } else {
-        this.handlerAddEdit = false;
+        this.setModAdd();
         const index = this.customers.findIndex((element) => element.id === id);
-        this.customers[index].name = form.value.name;
-        this.customers[index].birthdate = form.value.birthdate;
-        this.customers[index].email = form.value.email;
-        this.customers[index].gender = form.value.gender;
-        this.customerService.setCustomersEdit();
+        this.customerService.setCustomersEdit(form, index );
       }
       this.cleanFields();
+      this.ngOnInit();
     }
   }
 
