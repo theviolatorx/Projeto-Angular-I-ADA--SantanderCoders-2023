@@ -8,25 +8,47 @@ import { CustomerComponent } from '../../customers/customer/customer.component';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnChanges{
+export class HeaderComponent implements OnChanges, OnInit {
   private userLogged: boolean = false;
   private router: Router;
   public searchField: string;
+  private flag: string = 'pt-br';
+  public imgFlag: string = 'assets/img/brasil.png';
 
   constructor(
     private customerCompoment: CustomerComponent,
     private customerService: CustomerService,
     router: Router
-    ) {
+  ) {
     this.router = router;
     this.searchField = '';
   }
 
-  ngOnChanges(){
+  ngOnChanges() {
     console.log('Veio aqui!');
   }
 
-  
+  ngOnInit(): void {
+    this.switchFlag();
+  }
+
+
+  switchFlag(){
+    const tpFlag = localStorage.getItem('flag');
+    console.log("Clicou!", tpFlag);
+    switch (tpFlag) {
+      case 'pt-br':
+        this.flag = 'en-us';
+        this.imgFlag = 'assets/img/usa.png';
+        break;
+        case 'en-us':
+          this.flag = 'pt-br';
+          this.imgFlag = 'assets/img/brasil.png';
+        break;
+    }
+    localStorage.setItem('flag', this.flag);
+  }
+
   logout() {
     sessionStorage.clear();
     sessionStorage.setItem('keysession', JSON.stringify(this.userLogged));
@@ -36,7 +58,7 @@ export class HeaderComponent implements OnChanges{
   search() {
     if (!this.searchField) {
       this.customerService.searchFlag = true;
-    } else {      
+    } else {
       this.customerService.getCustomersList(true);
       const lenSearch: number = this.searchField.length;
       if (lenSearch > 0) {
