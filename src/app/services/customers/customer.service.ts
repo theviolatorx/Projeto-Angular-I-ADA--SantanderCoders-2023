@@ -25,24 +25,30 @@ export class CustomerService {
       } else {
         switch (this.searchType) {
           case '@':
-            this.customers = this.customers.filter((element) => element.email.toLowerCase().includes(this.removeFistChar(this.searchText)));
+            this.customers = this.customers.filter((element) =>
+              element.email
+                .toLowerCase()
+                .includes(this.removeFistChar(this.searchText))
+            );
             break;
           case '#':
             console.log('Pesquisa Data!');
-             // this.customers = this.customers.filter((element) => 
+            // this.customers = this.customers.filter((element) =>
             break;
           default:
-             this.customers = this.customers.filter((element) => element.name.toLowerCase().includes(this.searchText.toLowerCase()));
+            this.customers = this.customers.filter((element) =>
+              element.name.toLowerCase().includes(this.searchText.toLowerCase())
+            );
         }
       }
     }
   }
 
   private removeFistChar(searchText: string): string {
-    let newText:string = '';
-    for (let i=1; i < searchText.length; i++){
+    let newText: string = '';
+    for (let i = 1; i < searchText.length; i++) {
       newText += searchText[i];
-    } 
+    }
     return newText.toLowerCase();
   }
 
@@ -57,6 +63,7 @@ export class CustomerService {
   }
 
   setCustomersAdd(form: NgForm) {
+    // debugger
     let index = this.customers.at(-1)?.id;
     console.log('index', index);
     if (!index) index = 1;
@@ -72,7 +79,11 @@ export class CustomerService {
     }
   }
 
-  setCustomersEdit() {
+  setCustomersEdit(form: NgForm, index: number) {
+    this.customers[index].name = form.value.name;
+    this.customers[index].birthdate = form.value.birthdate;
+    this.customers[index].email = form.value.email;
+    this.customers[index].gender = form.value.gender;
     this.onSaveCustomers();
   }
 
