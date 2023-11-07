@@ -34,8 +34,10 @@ export class HeaderComponent implements OnChanges{
   }
 
   search() {
-    if (this.searchField) {
-      // debugger;
+    debugger;
+    if (!this.searchField) {
+      this.customerService.searchFlag = true;
+    } else {      
       const lenSearch: number = this.searchField.length;
       if (lenSearch > 0) {
         this.customerService.searchFlag = false;
@@ -50,9 +52,10 @@ export class HeaderComponent implements OnChanges{
             this.customerService.searchType = '';
           }
         }
-        this.customerService.getCustomersList(this.customerService.searchFlag);
-        this.customerCompoment.ngOnInit();
+       
       }
     }
+    this.customerService.getCustomersList(this.customerService.searchFlag);
+    this.customerCompoment.ngOnInit();
   }
 }
